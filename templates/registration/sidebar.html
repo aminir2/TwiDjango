@@ -1,0 +1,74 @@
+{% load static %}
+{% load base_tags %}
+
+<!-- Main Sidebar Container -->
+<aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <!-- Brand Logo -->
+    <a href="{% url 'tweet:home' %}" class="brand-link">
+        {#        <img src="{% static 'registration/profile/dist/img/AdminLTELogo.png' %}" alt="AdminLTE Logo"#}
+        {#             class="brand-image img-circle elevation-3"#}
+        {#             style="opacity: .8">#}
+        <div class="fa fa-twitter"></div>
+        <span class="brand-text font-weight-light">Developer Portal</span>
+    </a>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <!-- Sidebar user panel (optional) -->
+        <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+            <div class="image">
+                <img src="{{ user.avatar.url }}"
+                     class="img-circle elevation-2"
+                     alt="{{ user.username }}">
+            </div>
+            <div class="info">
+                <a href="{% url 'account:profile' %}" class="d-block">
+                    {% if user.first_name %}
+                        {{ user.first_name }} {{ user.last_name }}
+                    {% else %}
+                        {{ user.username }}
+                    {% endif %}
+                </a>
+            </div>
+        </div>
+
+        <!-- SidebarSearch Form -->
+
+        <!-- Sidebar Menu -->
+        <nav class="mt-2">
+            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
+                data-accordion="false">
+                <!-- Add icons to the links using the .nav-icon class
+                     with font-awesome or any other icon font library -->
+                {% if user.is_authenticated %}
+                    <li class="nav-item menu-open">
+                        <a href="#" class="nav-link active">
+                            <i class="nav-icon fas fa-tachometer-alt"></i>
+                            <p>
+                                Tweet Action
+                                <i class="right fas fa-angle-left"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                {% link2 request "tweet" 'fa fa-edit' 'Tweet' %}
+                            </li>
+                            <li class="nav-item">
+                                {% link2 request "retweet" 'fa-rebel' 'Auto Retweet' %}
+                            </li>
+                            <li class="nav-item">
+                                {% link2 request "mention" 'fa fa-pen' 'Auto Mention' %}
+                            </li>
+                        </ul>
+                    </li>
+                {% endif %}
+                <li class="nav-item">
+                    {% link request 'profile' 'fas fa-th' 'Profile' %}
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <!-- /.sidebar-menu -->
+    </div>
+    <!-- /.sidebar -->
+</aside>

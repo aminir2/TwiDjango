@@ -1,0 +1,6 @@
+.env
+.assets
+.venv
+.db.sqlite3
+# Project exclude paths
+/venv/

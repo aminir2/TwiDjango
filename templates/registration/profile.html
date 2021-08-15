@@ -1,0 +1,51 @@
+{% extends 'registration/base.html' %}
+{% load crispy_forms_tags %}
+{% block name %}{% block title-meta %}Profile{% endblock %}{% endblock %}
+{% block main %}
+    <div class="col-md-12">
+        <div class="card card-primary">
+            <div class="card-header">
+                <h3 class="card-title">Profile</h3>
+            </div>
+            <!-- /.card-header -->
+
+            <div class="card-body">
+                <div class="btn btn-danger">It's Necessary Enter Your Consumer key ,Consumer secret ,Access token and Access token secret For Using This Site Because It Needs To Connect To Twitter API </div>
+                <form method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="col-6">
+                            {{ form.username|as_crispy_field }}
+                        </div>
+                        <div class="col-6">
+                            {{ form.email|as_crispy_field }}
+                        </div>
+                        <div class="col-6">
+                            {{ form.first_name|as_crispy_field }}
+                        </div>
+                        <div class="col-6">
+                            {{ form.last_name|as_crispy_field }}
+                        </div>
+                        <div class="col-6">
+                            {{ form.consumer_key|as_crispy_field }}
+                        </div>
+                        <div class="col-6">
+                            {{ form.consumer_secret|as_crispy_field }}
+                        </div>
+                        <div class="col-6">
+                            {{ form.access_token|as_crispy_field }}
+                        </div>
+                        <div class="col-6">
+                            {{ form.access_token_secret|as_crispy_field }}
+                        </div>
+                        <div class="col-6">
+                            {{ form.avatar|as_crispy_field }}
+                        </div>
+                    </div>
+                    <button class="btn btn-success">Update Profile</button>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block copyright %}©2021 - All Rights Reserved To Amin Saberi.{% endblock %}

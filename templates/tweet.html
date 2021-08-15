@@ -1,0 +1,16 @@
+{% extends 'registration/home.html' %}
+{% load crispy_forms_tags %}
+{% block title-meta %}Tweet{% endblock %}
+{% block name %}<label class="btn btn-info">Send Tweet</label>{% endblock %}
+{% block main %}
+    <form action="" enctype="multipart/form-data" method="post">
+        {% csrf_token %}
+        {{ form.tweet|as_crispy_field }}
+        <br>
+        <label class="btn btn-secondary">If Your Tweet Has Photo You Can Upload It,If It Hasn't It's Not Necessary
+            Upload Photo!</label>
+        {{ form.tweet_photo|as_crispy_field }}
+        <input type="submit" class="btn btn-block btn-info" value="Send Tweet">
+    </form>{% endblock %}
+
+{% block copyright %}©2021 - All Rights Reserved To Amin Saberi.{% endblock %}

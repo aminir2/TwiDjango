@@ -1,0 +1,31 @@
+{% extends 'registration/home.html' %}
+{% load widget_tweaks %}
+{% load crispy_forms_tags %}
+{% block title-meta %}Auto Retweet{% endblock %}
+{% block name %}<label class="btn btn-info">Auto Retweet</label>{% endblock %}
+
+{% block main %}
+    <form enctype="multipart/form-data" method="post">
+        {% csrf_token %}
+        <label>If You Want To Retweet One More Word You Can Do It Like This:</label>
+        <br>
+        <label class="btn btn-secondary">AI OR Twitter OR ... Or .....</label>
+        <br>
+        {{ form.query|as_crispy_field }}
+        <br>
+        <label class="btn btn-secondary">Select Language</label>
+        {{ form.lang|as_crispy_field }}
+        <br>
+        <label class="btn btn-secondary">Enter How Many Retweet You Want:</label>
+        <br>
+        {{ form.count|as_crispy_field }}
+        <br>
+        <label class="btn btn-secondary">How Many Seconds Sleep Between Retweets?</label>
+        {{ form.sleep_time|as_crispy_field }}
+        <input type="submit" class="btn btn-block btn-info" value="Start Retweeting">
+        <br>
+        <label class="btn btn-outline-info">When Retweeting Process Finished You Will Redirect To Another Page!</label>
+    </form>
+{% endblock %}
+
+{% block copyright %}©2021 - All Rights Reserved To Amin Saberi.{% endblock %}
